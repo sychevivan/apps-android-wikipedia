@@ -1,4 +1,4 @@
-package org.wikipedia.lesson03
+package org.wikipedia.lesson03.homework
 
 import com.google.android.material.button.MaterialButton
 import org.wikipedia.R
