@@ -1,10 +1,9 @@
-package org.wikipedia.lesson08.homework
+package org.wikipedia.lesson09.homework
 
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import org.wikipedia.R
 import org.wikipedia.feed.view.FeedView
-import org.wikipedia.lesson09.homework.featuredArticleItem
 
 object ExploreScreenHW : KScreen<ExploreScreenHW>() {
     override val layoutId: Int = R.layout.fragment_feed
