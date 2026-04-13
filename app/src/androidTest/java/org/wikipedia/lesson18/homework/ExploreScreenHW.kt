@@ -21,12 +21,20 @@ object ExploreScreenHW : NamedScreen<ExploreScreenHW>() {
         customizeItems.invokeAtIndex(index, fnc)
     }
 
+    fun customizeBlock(fnc: CustomizeItem.() -> Unit){
+        customizeItems.invokeWithText("Customize", fnc)
+    }
+
     fun dateItem(index: Int, fnc: DateItem.() -> Unit) {
         dateItems.invokeAtIndex(index, fnc)
     }
 
     fun topReadItem(index: Int, fnc: TopReadItem.() -> Unit) {
         topReadItems.invokeAtIndex(index, fnc)
+    }
+
+    fun topReadBlock(fnc: TopReadItem.() -> Unit){
+        topReadItems.invokeWithText("Top read", fnc)
     }
 
     fun topReadItemWithText(text: String, fnc: TopReadItem.() -> Unit) {

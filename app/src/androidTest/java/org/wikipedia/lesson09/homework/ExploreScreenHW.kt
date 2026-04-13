@@ -31,7 +31,7 @@ object ExploreScreenHW : KScreen<ExploreScreenHW>() {
 
     val featuredArticleItems = KRecyclerView(
         builder = { withId(R.id.feed_view) },
-        itemTypeBuilder = { itemType(::featuredArticleItem) }
+        itemTypeBuilder = { itemType(::FeaturedArticleItem) }
     )
 }
 

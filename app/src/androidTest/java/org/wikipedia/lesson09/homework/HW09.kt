@@ -22,7 +22,7 @@ class HWTest : TestCase() {
                 OnboardingScreen.skip.click()
             }
             step("Проверяет, что на экране отображается featuredArticleItems") {
-                ExploreScreenHW.featuredArticleItems.childWith<featuredArticleItem> {
+                ExploreScreenHW.featuredArticleItems.childWith<FeaturedArticleItem> {
                     isInstanceOf(FeaturedArticleCardView::class.java)
                 }.perform {
                     isDisplayed()
@@ -57,7 +57,7 @@ class HWTest : TestCase() {
                 CustomizeTheFeedScreen.backToolbarButton.click()
             }
             step("Проверяет, что блок Featured Article не отображается на экране Explore (метод doesNotExist())") {
-                ExploreScreenHW.featuredArticleItems.childWith<featuredArticleItem> {
+                ExploreScreenHW.featuredArticleItems.childWith<FeaturedArticleItem> {
                     // isInstanceOf(FeaturedArticleCardView::class.java)
                     isAssignableFrom(FeaturedArticleCardView::class.java)
                 }.perform {

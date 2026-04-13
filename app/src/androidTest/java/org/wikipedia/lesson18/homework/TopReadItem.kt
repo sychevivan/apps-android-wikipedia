@@ -8,6 +8,7 @@ import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 import org.wikipedia.R
+import org.wikipedia.lesson18.homework.ExploreScreenHW.customizeItems
 import org.wikipedia.lesson18.name
 import org.wikipedia.lesson18.withParent
 import org.wikipedia.lesson18.invokeAtIndex
@@ -29,6 +30,8 @@ class TopReadItem(matcher: Matcher<View>) : KRecyclerItem<TopReadItem> (matcher)
             itemTypeBuilder = {itemType(::CardListItem)}
         ).name(withParent("cardListItems"))
     }
+
+
     val moreButton by lazy {
         KButton(matcher) { withId(R.id.footerActionButton) }
             .name(withParent("moreButton"))

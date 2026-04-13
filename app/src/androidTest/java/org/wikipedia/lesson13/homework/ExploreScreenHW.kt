@@ -9,7 +9,7 @@ import org.wikipedia.lesson09.homework.CustomizeItem
 import org.wikipedia.lesson09.homework.DateItem
 import org.wikipedia.lesson09.homework.InTheNewsItem
 import org.wikipedia.lesson09.homework.TopReadItem
-import org.wikipedia.lesson09.homework.featuredArticleItem
+import org.wikipedia.lesson09.homework.FeaturedArticleItem
 
 object ExploreScreenHW : KScreen<ExploreScreenHW>() {
     override val layoutId: Int = R.layout.fragment_feed
@@ -37,7 +37,7 @@ object ExploreScreenHW : KScreen<ExploreScreenHW>() {
 
     val featuredArticleItems = KRecyclerView(
         builder = { withId(R.id.feed_view) },
-        itemTypeBuilder = { itemType(::featuredArticleItem) }
+        itemTypeBuilder = { itemType(::FeaturedArticleItem) }
     )
 
     val search = KButton{
