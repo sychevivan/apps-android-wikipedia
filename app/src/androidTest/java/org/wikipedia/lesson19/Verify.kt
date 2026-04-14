@@ -1,5 +1,6 @@
 package org.wikipedia.lesson19
 
+import io.github.kakaocup.kakao.check.CheckableAssertions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.text.TextViewAssertions
@@ -42,4 +43,10 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
         )
     }
 
+    fun isNotChecked(element: CheckableAssertions) {
+        steps.isNotChecked(
+            "Проверяет, что переключатель '${(element as BaseActions).getName()}' выключен",
+            element
+        )
+    }
 }

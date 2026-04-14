@@ -26,9 +26,7 @@ class Tests : TestCase(
 
             ExploreScreenHW.topReadBlock {
                 cardListItem(2) {
-                    cardImage{
-                        verify.isDisplayed(this)
-                    }
+                    verify.isDisplayed(cardImage)
                 }
             }
         }
@@ -41,9 +39,14 @@ class Tests : TestCase(
             action.click(CommonMenuButtons.moreButton)
             action.click(CommonMenuButtons.settingsButton)
 
+            // SettingsScren.settingsItem("Show link previews") {
+            //     action.click(showLinkPreviewsSwitch)
+            //     showLinkPreviewsSwitch.isNotChecked()
+            // }
+
             SettingsScren.settingsItem("Show link previews") {
                 action.click(showLinkPreviewsSwitch)
-                showLinkPreviewsSwitch.isNotChecked()
+                verify.isNotChecked(showLinkPreviewsSwitch)
             }
         }
     }
