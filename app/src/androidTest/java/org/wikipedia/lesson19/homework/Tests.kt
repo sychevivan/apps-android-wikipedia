@@ -39,14 +39,12 @@ class Tests : TestCase(
             action.click(CommonMenuButtons.moreButton)
             action.click(CommonMenuButtons.settingsButton)
 
-            // SettingsScren.settingsItem("Show link previews") {
-            //     action.click(showLinkPreviewsSwitch)
-            //     showLinkPreviewsSwitch.isNotChecked()
-            // }
-
             SettingsScren.settingsItem("Show link previews") {
-                action.click(showLinkPreviewsSwitch)
-                verify.isNotChecked(showLinkPreviewsSwitch)
+                showLinkPreviewsSwitch {
+                    action.setCheckedTrue(this)
+                    action.click(this)
+                    verify.isNotChecked(this)
+                }
             }
         }
     }

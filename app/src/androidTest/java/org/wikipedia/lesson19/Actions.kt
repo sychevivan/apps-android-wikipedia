@@ -1,5 +1,6 @@
 package org.wikipedia.lesson19
 
+import io.github.kakaocup.kakao.check.CheckableActions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import org.wikipedia.lesson18.getName
 
@@ -10,5 +11,13 @@ class Actions(private val steps: StepDefinitions) : StepsDsl<Actions>() {
 
     fun click(element: BaseActions) {
         steps.click("Нажимает на '${element.getName()}'", element)
+    }
+
+    fun setCheckedTrue(element: CheckableActions) {
+        steps.setChecked("Включает '${(element as BaseActions).getName()}'", element, true)
+    }
+
+    fun setCheckedFalse(element: CheckableActions) {
+        steps.setChecked("Выключает '${(element as BaseActions).getName()}'", element, false)
     }
 }

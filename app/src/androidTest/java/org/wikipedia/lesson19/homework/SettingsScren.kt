@@ -20,13 +20,6 @@ object SettingsScren : NamedScreen<SettingsScren>() {
     override val viewClass = null
 
 
-    val recycler by lazy {
-        KButton {
-            withId(R.id.recycler_view)
-        }.name(withParent("Кнопка More"))
-    }
-
-
     val recyclerSettings by lazy {
         KRecyclerView(
             builder = {
