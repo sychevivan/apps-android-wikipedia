@@ -1,16 +1,15 @@
 package org.wikipedia.lesson18.homework
 
-import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KButton
 import org.wikipedia.R
+import org.wikipedia.feed.featured.FeaturedArticleCardView
 import org.wikipedia.feed.view.FeedView
 import org.wikipedia.lesson18.NamedScreen
-import org.wikipedia.lesson18.getByIndex
 import org.wikipedia.lesson18.invokeAtIndex
 import org.wikipedia.lesson18.invokeWithText
 import org.wikipedia.lesson18.name
-import org.wikipedia.lesson18.withParent
+import org.wikipedia.lesson21.invokeAtIndexAndClass
 
 object ExploreScreenHW : NamedScreen<ExploreScreenHW>() {
     override val screenName = "Экран Explore"
@@ -21,7 +20,7 @@ object ExploreScreenHW : NamedScreen<ExploreScreenHW>() {
         customizeItems.invokeAtIndex(index, fnc)
     }
 
-    fun customizeBlock(fnc: CustomizeItem.() -> Unit){
+    fun customizeBlock(fnc: CustomizeItem.() -> Unit) {
         customizeItems.invokeWithText("Customize", fnc)
     }
 
@@ -33,7 +32,7 @@ object ExploreScreenHW : NamedScreen<ExploreScreenHW>() {
         topReadItems.invokeAtIndex(index, fnc)
     }
 
-    fun topReadBlock(fnc: TopReadItem.() -> Unit){
+    fun topReadBlock(fnc: TopReadItem.() -> Unit) {
         topReadItems.invokeWithText("Top read", fnc)
     }
 
@@ -49,8 +48,19 @@ object ExploreScreenHW : NamedScreen<ExploreScreenHW>() {
         inTheNewsItems.invokeWithText(text, fnc)
     }
 
-    fun featuredArticleItem(index: Int, fnc: featuredArticleItem.() -> Unit) {
+    fun featuredArticleItem(index: Int, fnc: FeaturedArticleItem.() -> Unit) {
         featuredArticleItems.invokeAtIndex(index, fnc)
+    }
+
+    fun featuredArticle(index: Int, fnc: FeaturedArticleItem.() -> Unit) {
+        items.invokeAtIndexAndClass(
+            index,
+            FeaturedArticleCardView::class.java,
+            (index + 1) * 10,
+            1,
+            "$index блок Featured Article",
+            fnc
+        )
     }
 
     val customizeItems by lazy {
@@ -84,7 +94,7 @@ object ExploreScreenHW : NamedScreen<ExploreScreenHW>() {
     val featuredArticleItems by lazy {
         KRecyclerView(
             builder = { withId(R.id.feed_view) },
-            itemTypeBuilder = { itemType(::featuredArticleItem) }
+            itemTypeBuilder = { itemType(::FeaturedArticleItem) }
         ).name(withParent("Featured Article Items"))
     }
 
@@ -92,6 +102,18 @@ object ExploreScreenHW : NamedScreen<ExploreScreenHW>() {
         KButton {
             withText(R.string.search_hint)
         }.name(withParent("Поиск"))
+    }
+
+    val items by lazy {
+        KRecyclerView(
+            builder = { withId(R.id.feed_view) },
+            itemTypeBuilder = {
+                itemType(::DateItem)
+                itemType(::TopReadItem)
+                itemType(::InTheNewsItem)
+                itemType(::FeaturedArticleItem)
+                itemType(::CustomizeItem)
+            }).name(withParent("Список блоков"))
     }
 }
 

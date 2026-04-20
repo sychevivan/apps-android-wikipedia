@@ -9,7 +9,7 @@ import org.wikipedia.R
 import org.wikipedia.lesson18.name
 import org.wikipedia.lesson18.withParent
 
-class featuredArticleItem(matcher: Matcher<View>) : KRecyclerItem<featuredArticleItem>(matcher) {
+class FeaturedArticleItem(matcher: Matcher<View>) : KRecyclerItem<FeaturedArticleItem>(matcher) {
     val articleImage by lazy {
         KImageView(matcher) { withId(R.id.articleImage) }
             .name(withParent("articleImage"))
