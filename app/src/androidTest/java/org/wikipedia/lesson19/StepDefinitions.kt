@@ -60,4 +60,16 @@ class StepDefinitions(private val testContext: TestContext<*>) {
             element.setChecked(checked)
         }
     }
+
+    fun isEnabled(step: String, element: BaseAssertions) {
+        execute(step) {
+            element.isEnabled()
+        }
+    }
+
+    fun isDisabled(step: String, element: BaseAssertions) {
+        execute(step) {
+            element.isDisabled()
+        }
+    }
 }

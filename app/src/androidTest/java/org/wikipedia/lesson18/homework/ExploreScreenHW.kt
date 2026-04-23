@@ -10,6 +10,7 @@ import org.wikipedia.lesson18.invokeAtIndex
 import org.wikipedia.lesson18.invokeWithText
 import org.wikipedia.lesson18.name
 import org.wikipedia.lesson21.invokeAtIndexAndClass
+import org.wikipedia.lesson22.SearchWidget
 
 object ExploreScreenHW : NamedScreen<ExploreScreenHW>() {
     override val screenName = "Экран Explore"
@@ -114,6 +115,12 @@ object ExploreScreenHW : NamedScreen<ExploreScreenHW>() {
                 itemType(::FeaturedArticleItem)
                 itemType(::CustomizeItem)
             }).name(withParent("Список блоков"))
+    }
+
+    val searchWidget by lazy {
+        SearchWidget {
+            withId(R.id.search_container)
+        }.name(withParent("Виджет поиска"))
     }
 }
 

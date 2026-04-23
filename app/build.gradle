@@ -365,9 +365,9 @@ tasks.register("generateAllureReport", Exec) {
 }
 
 // Автоматическая генерация отчёта после pull
-tasks.named("pullAllureResults") {
-    finalizedBy tasks.named("generateAllureReport")
-}
+//tasks.named("pullAllureResults") {
+//    finalizedBy tasks.named("generateAllureReport")
+//}
 
 // Настройка зависимостей - для всех заданий с названием connected и androidtest выполнять clearDeviceAllureResults перед заданием и pullAllureResults после задания
 tasks.withType(com.android.build.gradle.internal.tasks.AndroidTestTask).configureEach { Task task ->
