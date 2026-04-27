@@ -8,7 +8,6 @@ import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 import org.wikipedia.R
-import org.wikipedia.lesson18.homework.ExploreScreenHW.customizeItems
 import org.wikipedia.lesson18.name
 import org.wikipedia.lesson18.withParent
 import org.wikipedia.lesson18.invokeAtIndex

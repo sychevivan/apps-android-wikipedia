@@ -5,6 +5,7 @@ import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.wikipedia.lesson18.getName
+import org.wikipedia.lesson23.KWebViewElement
 
 // Шаги проверок
 class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
@@ -68,6 +69,21 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
         steps.isDisabled(
             "Проверяет, что заблокирован ' '${(element as BaseActions).getName()}'",
             element
+        )
+    }
+
+    fun isDisplayed(element: KWebViewElement) {
+        steps.isDisplayed(
+            "Проверяет, что отображается WebView элемент '${element.getName()}'",
+            element
+        )
+    }
+
+    fun hasText(element: KWebViewElement, text: String) {
+        steps.hasText(
+            "Проверяет что текст в WebView элементе '${element.getName()}' эквивалентен '$text'",
+            element,
+            text
         )
     }
 }
