@@ -1,6 +1,7 @@
 package org.wikipedia.lesson18.homework
 
 import android.view.View
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.image.KImageView
@@ -16,6 +17,7 @@ import org.hamcrest.Matcher
 import org.wikipedia.R
 import org.wikipedia.lesson18.NameHierarchy
 import org.wikipedia.lesson18.NamedScreen
+import org.wikipedia.lesson18.invokeAtIndex
 import org.wikipedia.lesson18.invokeByIndex
 import org.wikipedia.lesson18.name
 import org.wikipedia.lesson18.withParent
@@ -53,6 +55,11 @@ object OnboardingScreen : NamedScreen<OnboardingScreen>() {
             withId(R.id.view_onboarding_page_indicator)
         }.name(withParent("Табы"))
     }
+
+    val backToolbarButton = KButton {
+        withParent { withId(R.id.toolbar) }
+        isInstanceOf(AppCompatImageButton::class.java)
+    }.name(withParent("Кнопка назад на тулбаре"))
 }
 
 class PagerItem(matcher: Matcher<View>) : KViewPagerItem<PagerItem>(matcher) {
@@ -85,6 +92,10 @@ class PagerItem(matcher: Matcher<View>) : KViewPagerItem<PagerItem>(matcher) {
         KButton(matcher) {
             withId(R.id.addLanguageButton)
         }.name(withParent("Кнопка добавления языка"))
+    }
+
+    fun languagesBlockByIndex(index: Int, fnc: LanguageItem.() -> Unit) {
+        languages.invokeAtIndex<LanguageItem>(index, fnc)
     }
 }
 

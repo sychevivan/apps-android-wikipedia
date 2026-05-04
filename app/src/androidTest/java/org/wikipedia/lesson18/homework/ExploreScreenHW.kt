@@ -1,5 +1,6 @@
 package org.wikipedia.lesson18.homework
 
+import androidx.appcompat.widget.AppCompatImageButton
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KButton
 import org.wikipedia.R

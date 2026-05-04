@@ -1,11 +1,14 @@
 package org.wikipedia.lesson19
 
+import io.github.kakaocup.compose.node.action.NodeActions
+import io.github.kakaocup.compose.node.assertion.NodeAssertions
 import io.github.kakaocup.kakao.check.CheckableAssertions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.wikipedia.lesson18.getName
 import org.wikipedia.lesson23.KWebViewElement
+import org.wikipedia.lesson24.getName
 
 // Шаги проверок
 class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
@@ -82,6 +85,14 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
     fun hasText(element: KWebViewElement, text: String) {
         steps.hasText(
             "Проверяет что текст в WebView элементе '${element.getName()}' эквивалентен '$text'",
+            element,
+            text
+        )
+    }
+
+    fun assertTrimmedTextIsEquals(element: NodeAssertions, text: String) {
+        steps.assertTrimmedTextIsEquals(
+            "Проверяет что trimmed текст '${(element as NodeActions).getName()}' эквивалентен '$text'",
             element,
             text
         )

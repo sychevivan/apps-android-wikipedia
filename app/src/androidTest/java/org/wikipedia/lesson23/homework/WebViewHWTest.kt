@@ -14,7 +14,7 @@ import org.wikipedia.lesson19.ext.verify
 import org.wikipedia.lesson23.ArticleScreen
 import org.wikipedia.main.MainActivity
 
-class webViewHWTest: TestCase(Kaspresso.Builder.withForcedAllureSupport()) {
+class WebViewHWTest: TestCase(Kaspresso.Builder.withForcedAllureSupport()) {
 
     @get:Rule
     val testRule = ActivityScenarioRule(MainActivity::class.java)

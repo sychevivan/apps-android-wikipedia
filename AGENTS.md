@@ -46,6 +46,23 @@ Classes and packages are organized roughly by "feature":
 - SharedPreferences are encapsulated in `Prefs.kt`. If adding a new preference, follow the pattern in that file.
 - When setting up an A/B test for any feature, subclass from `ABTest.kt`, which automatically assigns the current user into a test bucket.
 
+## Build environment
+
+- The project requires **JDK 17 or later**. `sourceCompatibility`, `targetCompatibility`, and Kotlin `jvmTarget` are all set to 17 in `app/build.gradle` and `analytics/testkitchen/build.gradle`.
+- The Gradle wrapper does **not** auto-provision a JDK (no `foojay-resolver` plugin is configured). Gradle uses whatever `JAVA_HOME` / `PATH` points to. If that resolves to JDK 8 or earlier, Gradle fails on startup with `Gradle requires JVM 17 or later to run. Your build is currently configured to use JVM 8.`
+- Recommended JDK sources, in order of preference:
+  - Android Studio's bundled JBR — already JDK 17+ on any modern Android Studio (currently JDK 21):
+    - Windows: `C:\Program Files\Android\Android Studio\jbr`
+    - macOS: `/Applications/Android Studio.app/Contents/jbr/Contents/Home`
+    - Linux: `<Android Studio install>/jbr`
+  - A JDK previously downloaded by Gradle/IDE into `~/.gradle/jdks/` (e.g. `~/.gradle/jdks/eclipse_adoptium-17-amd64-<os>/jdk-17.x.y+z`).
+  - Any standalone Temurin / Zulu / Microsoft / Oracle JDK 17+.
+- To override `JAVA_HOME` for a single Gradle invocation when the default is wrong:
+  - bash / Git Bash / MinGW: `JAVA_HOME="/c/Program Files/Android/Android Studio/jbr" ./gradlew assembleDevDebug`
+  - PowerShell: `$env:JAVA_HOME="C:\Program Files\Android\Android Studio\jbr"; .\gradlew.bat assembleDevDebug`
+  - cmd.exe: `set JAVA_HOME=C:\Program Files\Android\Android Studio\jbr&& gradlew.bat assembleDevDebug`
+- To verify before running Gradle: `"$JAVA_HOME/bin/java" -version` should report version `17` or higher.
+
 ## Code conventions
 
 - To check if the app builds without errors: `./gradlew assembleDevDebug`
