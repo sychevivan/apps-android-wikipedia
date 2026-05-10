@@ -12,8 +12,18 @@ import org.wikipedia.lesson23.KWebViewElement
 import org.wikipedia.lesson23.WebViewTest
 import org.wikipedia.lesson24.assertTrimmedTextIsEquals
 import org.wikipedia.lesson24.clickIfEnabled
+import org.wikipedia.lesson25.ClosePlayTodayGame
+import org.wikipedia.lesson25.CloseGotIt
+import org.wikipedia.lesson25.PassInterferingScreens
 
 class StepDefinitions(private val testContext: TestContext<*>) {
+
+    private val passInterferingScreens = PassInterferingScreens(
+        listOf(
+            ClosePlayTodayGame(testContext),
+            CloseGotIt(testContext)
+        )
+    )
 
     fun click(step: String, element: BaseActions) {
         execute(step) {
@@ -45,7 +55,12 @@ class StepDefinitions(private val testContext: TestContext<*>) {
 
     private fun execute(step: String, fnc: () -> Unit) {
         testContext.step(step) {
-            fnc()
+            try {
+                fnc()
+            } catch (_: Throwable) {
+                passInterferingScreens.execute()
+                fnc()
+            }
         }
     }
 

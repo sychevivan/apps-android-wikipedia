@@ -20,7 +20,7 @@ object AddLanguageScreen : ComposeNamedScreen<AddLanguageScreen>() {
             itemTypeBuilder = {
                 itemType(::LanguageItem)
             },
-        )
+        ).name(withParent("Список доступных для выбора языков"))
     }
 
     fun itemWithText(text: String, fnc: LanguageItem.() -> Unit) {

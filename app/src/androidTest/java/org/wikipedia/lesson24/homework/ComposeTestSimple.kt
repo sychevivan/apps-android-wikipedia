@@ -50,6 +50,9 @@ class ComposeTestSimple :
                 languagesBlockByIndex(2){
                     verify.hasText(this, "3.\t\tDeutsch")
                 }
+                languagesBlockByText("3.\t\tDeutsch"){
+                    verify.isDisplayed(this)
+                }
             }
         }
     }

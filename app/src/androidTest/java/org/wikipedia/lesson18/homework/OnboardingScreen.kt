@@ -18,6 +18,7 @@ import org.wikipedia.R
 import org.wikipedia.lesson18.NameHierarchy
 import org.wikipedia.lesson18.NamedScreen
 import org.wikipedia.lesson18.invokeAtIndex
+import org.wikipedia.lesson18.invokeWithText
 import org.wikipedia.lesson18.invokeByIndex
 import org.wikipedia.lesson18.name
 import org.wikipedia.lesson18.withParent
@@ -96,6 +97,10 @@ class PagerItem(matcher: Matcher<View>) : KViewPagerItem<PagerItem>(matcher) {
 
     fun languagesBlockByIndex(index: Int, fnc: LanguageItem.() -> Unit) {
         languages.invokeAtIndex<LanguageItem>(index, fnc)
+    }
+
+    fun languagesBlockByText(text: String, fnc: LanguageItem.() -> Unit) {
+        languages.invokeWithText<LanguageItem>(text, fnc)
     }
 }
 
