@@ -9,4 +9,12 @@ object SearchResultScreen : UiScreen<SearchResultScreen>() {
     val putin = UiButton {
         withText("Vladimir Putin")
     }
+
+    val nothingFound = UiButton {
+        withText("Ничего не найдено")
+    }
+
+    val trump = UiButton {
+        withText("Трамп, Дональд")
+    }
 }

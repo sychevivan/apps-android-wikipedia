@@ -22,6 +22,13 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
         )
     }
 
+    fun isDisplayed(element: NodeAssertions) {
+        steps.isDisplayed(
+            "Проверяет, что отображается Compose элемент '${(element as NodeActions).getName()}'",
+            element
+        )
+    }
+
     fun hasText(element: TextViewAssertions, text: String) {
         steps.hasText(
             "Проверяет что текст в элементе '${(element as BaseActions).getName()}' эквивалентен '$text'",
@@ -43,6 +50,13 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
     fun doesNotExist(element: BaseAssertions) {
         steps.doesNotExist(
             "Проверяет, что элемент '${(element as BaseActions).getName()}' отсутствует",
+            element
+        )
+    }
+
+    fun doesNotExist(element: NodeAssertions) {
+        steps.doesNotExist(
+            "Проверяет, что Compose элемент '${(element as NodeActions).getName()}' отсутствует",
             element
         )
     }

@@ -19,6 +19,22 @@ static def computeVersionName(versionCode, label) {
     return "${versionCode}-${label}-${(new Date()).format('yyyy-MM-dd')}"
 }
 
+def autotestPropertiesFile = rootProject.file("autotest.properties")
+def autotestProperties = new Properties()
+if (autotestPropertiesFile.exists()) {
+    autotestPropertiesFile.withInputStream { stream ->
+        autotestProperties.load(stream)
+    }
+}
+
+def dataPropertiesFile = rootProject.file("data.properties")
+def dataProperties = new Properties()
+if (dataPropertiesFile.exists()) {
+    dataPropertiesFile.withInputStream { stream ->
+        dataProperties.load(stream)
+    }
+}
+
 android {
     compileSdk = 36
 
@@ -57,6 +73,8 @@ android {
 
         buildConfigField "String", "TEST_LOGIN_USERNAME", TEST_LOGIN_USERNAME != null ? "\"${TEST_LOGIN_USERNAME}\"" : '"Foo"'
         buildConfigField "String", "TEST_LOGIN_PASSWORD", TEST_LOGIN_PASSWORD != null ? "\"${TEST_LOGIN_PASSWORD}\"" : '"Bar"'
+
+
     }
 
     testOptions {
@@ -99,6 +117,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             testProguardFiles 'test-proguard-rules.pro'
+
+            autotestProperties.each { key, value ->
+                buildConfigField "String", key.toString(), "\"${value.toString()}\""
+            }
+
+            dataProperties.each { key, value ->
+                buildConfigField "String", key.toString(), "\"${value.toString()}\""
+            }
         }
         release {
             minifyEnabled true

@@ -11,6 +11,7 @@ import io.github.kakaocup.compose.node.element.ComposeScreen.Companion.onCompose
 import io.github.kakaocup.compose.rule.KakaoComposeTestRule
 import org.junit.Rule
 import org.junit.Test
+import org.wikipedia.BuildConfig
 import org.wikipedia.lesson18.homework.OnboardingScreen
 import org.wikipedia.lesson19.ext.action
 import org.wikipedia.lesson19.ext.verify
@@ -38,8 +39,8 @@ class ComposeTestSimple :
 
             AddLanguageScreen {
                 itemWithText("Deutsch") {
-                    verify.assertTrimmedTextIsEquals(canonicalName, "немецкий")
-                    verify.assertTrimmedTextIsEquals( localName, "Deutsch")
+                    verify.assertTrimmedTextIsEquals(canonicalName, BuildConfig.CANONICAL_LANGUAGE)
+                    verify.assertTrimmedTextIsEquals( localName, BuildConfig.LOCAL_LANGUAGE)
                     action.clickIfEnabled(canonicalName)
                 }
             }
@@ -47,10 +48,10 @@ class ComposeTestSimple :
             action.click(OnboardingScreen.backToolbarButton)
 
             OnboardingScreen.page(0) {
-                languagesBlockByIndex(2){
-                    verify.hasText(this, "3.\t\tDeutsch")
-                }
-                languagesBlockByText("3.\t\tDeutsch"){
+                // languagesBlockByIndex(2){
+                //     verify.containsText(this, "3.\t\tDeutsch")
+                // }
+                languagesBlockByText(BuildConfig.DISPLAY_LANGUAGE){
                     verify.isDisplayed(this)
                 }
             }

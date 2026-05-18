@@ -31,4 +31,8 @@ class Actions(private val steps: StepDefinitions) : StepsDsl<Actions>() {
     fun clickIfEnabled(element: NodeActions) {
         steps.clickIfEnabled("clickIfEnabled '${element.getName()}'", element)
     }
+
+    fun typeText(element: BaseActions, text: String) {
+        (element as io.github.kakaocup.kakao.edit.KEditText).typeText(text)
+    }
 }

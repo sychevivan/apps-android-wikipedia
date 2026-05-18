@@ -44,3 +44,4 @@ device*.png
 
 # Log Files
 *.log
+/autotest.properties

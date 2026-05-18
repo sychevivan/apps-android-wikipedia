@@ -37,6 +37,12 @@ class StepDefinitions(private val testContext: TestContext<*>) {
         }
     }
 
+    fun isDisplayed(step: String, element: NodeAssertions) {
+        execute(step) {
+            element.assertIsDisplayed()
+        }
+    }
+
     fun hasText(step: String, element: TextViewAssertions, text: String, isSubstring: Boolean) {
         execute(step) {
             if (isSubstring) {
@@ -50,6 +56,12 @@ class StepDefinitions(private val testContext: TestContext<*>) {
     fun doesNotExist(step: String, element: BaseAssertions) {
         execute(step) {
             element.doesNotExist()
+        }
+    }
+
+    fun doesNotExist(step: String, element: NodeAssertions) {
+        execute(step) {
+            element.assertDoesNotExist()
         }
     }
 
