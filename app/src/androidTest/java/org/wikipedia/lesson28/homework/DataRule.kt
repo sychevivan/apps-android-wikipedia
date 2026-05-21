@@ -3,6 +3,7 @@ package org.wikipedia.lesson28.homework
 import org.junit.rules.TestRule
 import org.junit.runner.Description as JUnitDescription
 import org.junit.runners.model.Statement
+import io.qameta.allure.kotlin.Description
 import org.wikipedia.BuildConfig
 
 class DataRule : TestRule {
