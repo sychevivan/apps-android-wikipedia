@@ -1,0 +1,27 @@
+name: "My awesome tests"
+outputDir: "marathon"
+debug: false
+vendorConfiguration:
+  type: "Android"
+  androidSdk: 'C:\Users\ivan.sychev\AppData\Local\Android\Sdk'
+  applicationApk: "app/build/outputs/apk/alpha/debug/app-alpha-debug.apk"
+  testApplicationApk: "app/build/outputs/apk/androidTest/alpha/debug/app-alpha-debug-androidTest.apk"
+  adbInitTimeoutMillis: 60000
+  applicationPmClear: true
+  testApplicationPmClear: true
+  allureConfiguration:
+      enabled: true
+      relativeResultsDirectory: "/Documents/allure-results"
+      pathRoot: "EXTERNAL_STORAGE"
+filteringConfiguration:
+  allowlist:
+    - type: "fully-qualified-test-name"
+      values:
+        - "org.wikipedia.lesson25.homework.SmartScenariosTest#smartScenariosTest1"
+        - "org.wikipedia.lesson23.homework.WebViewHWTest#webViewSimple"
+poolingStrategy:
+  type: "omni"
+shardingStrategy:
+  type: "parallel"
+batchingStrategy:
+  type: "isolate"
