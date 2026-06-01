@@ -68,6 +68,15 @@ timeout /t 5 /nobreak >nul
 echo [INFO] Emulator stopped
 echo.
 
+REM [STEP 7] Delete Emulator
+echo [STEP 7] Deleting emulator (%EMULATOR_NAME%)...
+call avdmanager delete avd -n %EMULATOR_NAME%
+if errorlevel 1 (
+    echo [WARNING] Failed to delete emulator
+) else (
+    echo [INFO] Emulator deleted successfully
+)
+
 echo ========================================
 echo Script execution finished
 echo ========================================
